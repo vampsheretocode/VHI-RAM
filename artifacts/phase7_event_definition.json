@@ -1,0 +1,33 @@
+{
+  "methodology": "Grid-cell monthly 95th percentile, fallback to Domain monthly",
+  "percentile": 95,
+  "grouping_keys": [
+    "latitude",
+    "longitude",
+    "valid_time.month"
+  ],
+  "min_sample_size": 30,
+  "fallback_hierarchy": [
+    "grid_cell + month",
+    "month"
+  ],
+  "train_period": "Jan-Aug 2020",
+  "repeated_observation_handling": "Observations de-duplicated by (valid_time, lat, lon) before percentile calculation.",
+  "stats": {
+    "train_obs": 7163442,
+    "train_forecast_cases": 34543080,
+    "groups_with_sufficient_data": 113256,
+    "groups_failed_min_sample": 14157
+  },
+  "domain_fallback_thresholds": {
+    "1": 300.9574890136719,
+    "2": 302.3873291015625,
+    "3": 305.211181640625,
+    "4": 309.7276611328125,
+    "5": 312.44580078125,
+    "6": 308.5302139282227,
+    "7": 306.56581115722656,
+    "8": 305.2664596557617,
+    "9": 305.27630615234375
+  }
+}

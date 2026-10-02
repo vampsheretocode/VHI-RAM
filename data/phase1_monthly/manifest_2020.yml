@@ -1,0 +1,156 @@
+month_1:
+  file: data/phase1_monthly\phase1_2020_01.parquet
+  qa:
+    dups: 0
+    file_size: 102123149
+    hres_count: 4388670
+    infs: 0
+    missing_f: 0
+    missing_o: 0
+    nans: 0
+    pangu_count: 4388670
+    row_count: 8777340
+  status: PASS
+month_10:
+  file: data/phase1_monthly\phase1_2020_10.parquet
+  qa:
+    dups: 0
+    file_size: 96078197
+    hres_count: 4388670
+    infs: 0
+    missing_f: 0
+    missing_o: 0
+    nans: 0
+    pangu_count: 4388670
+    row_count: 8777340
+  status: PASS
+month_11:
+  file: data/phase1_monthly\phase1_2020_11.parquet
+  qa:
+    dups: 0
+    file_size: 95036718
+    hres_count: 4247100
+    infs: 0
+    missing_f: 0
+    missing_o: 0
+    nans: 0
+    pangu_count: 4247100
+    row_count: 8494200
+  status: PASS
+month_12:
+  file: data/phase1_monthly\phase1_2020_12.parquet
+  qa:
+    dups: 0
+    file_size: 100375764
+    hres_count: 4388670
+    infs: 0
+    missing_f: 0
+    missing_o: 0
+    nans: 0
+    pangu_count: 4388670
+    row_count: 8777340
+  status: PASS
+month_2:
+  file: data/phase1_monthly\phase1_2020_02.parquet
+  qa:
+    dups: 0
+    file_size: 93949939
+    hres_count: 4105530
+    infs: 0
+    missing_f: 0
+    missing_o: 0
+    nans: 0
+    pangu_count: 4105530
+    row_count: 8211060
+  status: PASS
+month_3:
+  file: data/phase1_monthly\phase1_2020_03.parquet
+  qa:
+    dups: 0
+    file_size: 99119012
+    hres_count: 4388670
+    infs: 0
+    missing_f: 0
+    missing_o: 0
+    nans: 0
+    pangu_count: 4388670
+    row_count: 8777340
+  status: PASS
+month_4:
+  file: data/phase1_monthly\phase1_2020_04.parquet
+  qa:
+    dups: 0
+    file_size: 94931395
+    hres_count: 4247100
+    infs: 0
+    missing_f: 0
+    missing_o: 0
+    nans: 0
+    pangu_count: 4247100
+    row_count: 8494200
+  status: PASS
+month_5:
+  file: data/phase1_monthly\phase1_2020_05.parquet
+  qa:
+    dups: 0
+    file_size: 97110988
+    hres_count: 4388670
+    infs: 0
+    missing_f: 0
+    missing_o: 0
+    nans: 0
+    pangu_count: 4388670
+    row_count: 8777340
+  status: PASS
+month_6:
+  file: data/phase1_monthly\phase1_2020_06.parquet
+  qa:
+    dups: 0
+    file_size: 92110394
+    hres_count: 4247100
+    infs: 0
+    missing_f: 0
+    missing_o: 0
+    nans: 0
+    pangu_count: 4247100
+    row_count: 8494200
+  status: PASS
+month_7:
+  file: data/phase1_monthly\phase1_2020_07.parquet
+  qa:
+    dups: 0
+    file_size: 92589279
+    hres_count: 4388670
+    infs: 0
+    missing_f: 0
+    missing_o: 0
+    nans: 0
+    pangu_count: 4388670
+    row_count: 8777340
+  status: PASS
+month_8:
+  file: data/phase1_monthly\phase1_2020_08.parquet
+  qa:
+    dups: 0
+    file_size: 91644736
+    hres_count: 4388670
+    infs: 0
+    missing_f: 0
+    missing_o: 0
+    nans: 0
+    pangu_count: 4388670
+    row_count: 8777340
+  status: PASS
+month_9:
+  file: data/phase1_monthly\phase1_2020_09.parquet
+  qa:
+    dups: 0
+    file_size: 90845043
+    hres_count: 4247100
+    infs: 0
+    missing_f: 0
+    missing_o: 0
+    nans: 0
+    pangu_count: 4247100
+    row_count: 8494200
+  status: PASS

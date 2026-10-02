@@ -1,0 +1,17 @@
+calendar_handling: circular_366
+climatology_end: '2019-12-31'
+climatology_start: '1991-01-01'
+creation_timestamp: '2026-09-30T12:16:28.641431'
+final_row_count: 5181462
+grid_resolution: 0.25
+latitude_bounds:
+- 37
+- 8
+longitude_bounds:
+- 68
+- 98
+percentile: 0.95
+source_dataset: gs://weatherbench2/datasets/era5/1959-2022-6h-1440x721.zarr
+validation_status: PASS
+variable: 2m_temperature
+window_days: 15

@@ -1,0 +1,8 @@
+{
+  "window_definition": "Trailing 30 days of valid_time",
+  "verification_lag_handling": "Joined via merge_asof where valid_time <= init_time",
+  "minimum_sample_threshold_used": "Domain-level fallback (all grid cells aggregated)",
+  "total_skill_periods_computed": 3660,
+  "source_lead_coverage": "HRES and PANGU for 24, 48, 72, 120, 240 leads",
+  "cases_with_no_history_at_init": 594594
+}

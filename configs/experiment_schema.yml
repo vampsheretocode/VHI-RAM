@@ -1,0 +1,23 @@
+# Experiment Configuration Schema
+experiment_id: string
+description: string
+data:
+  train_start: string
+  train_end: string
+  val_start: string
+  val_end: string
+  test_start: string
+  test_end: string
+  region:
+    lat_min: float
+    lat_max: float
+    lon_min: float
+    lon_max: float
+  variables: list[string]
+  lead_times: list[int]
+models:
+  - name: string
+    features: list[string]
+    target: string
+    hyperparameters: dict
+baseline: list[string]

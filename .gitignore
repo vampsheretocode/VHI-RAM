@@ -1,0 +1,28 @@
+# Python virtual environment
+.venv/
+
+# Runtime logs
+logs/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Large scientific datasets
+data/**/*.parquet

@@ -1,0 +1,27 @@
+# Configuration for Phase 7B.3 ERA5 Extreme Heat Climatology
+# Do NOT use 2020 data. 1991-2019 only.
+
+data_source:
+  zarr_url: "gs://weatherbench2/datasets/era5/1959-2022-6h-1440x721.zarr"
+  variable: "2m_temperature"
+
+historical_period:
+  start_date: "1991-01-01"
+  end_date: "2019-12-31"
+
+spatial_domain:
+  # ERA5 latitudes are descending (90 to -90), so slicing will be 37 to 8
+  latitude_max: 37
+  latitude_min: 8
+  longitude_min: 68
+  longitude_max: 98
+  resolution_degrees: 0.25
+
+climatology:
+  percentile: 0.95
+  smoothing_window_days: 15
+  calendar_type: "circular_366"  # DOY wraps around 1-366
+
+output:
+  artifact_path: "data/extreme_climatology/era5_smooth_doy_95th.parquet"
+  manifest_path: "data/extreme_climatology/manifest.yml"

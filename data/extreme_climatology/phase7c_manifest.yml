@@ -1,0 +1,33 @@
+baselines:
+- Climatological Event Rate
+- Deterministic Adaptive Blend
+creation_timestamp: '2026-09-30T18:30:20.919116'
+features:
+- adaptive_blend_margin
+- p90_margin
+- interval_width
+- forecast_disagreement
+lead_times:
+- 24
+- 48
+- 72
+- 120
+- 240
+metrics_summary:
+  '120':
+    clf_csi: 0.2719032181361604
+    det_csi: 0.22698228289282601
+  '24':
+    clf_csi: 0.43544922136152536
+    det_csi: 0.40262722865099354
+  '240':
+    clf_csi: 0.1861113048213936
+    det_csi: 0.13467635811246434
+  '48':
+    clf_csi: 0.3634906322011823
+    det_csi: 0.3273321162263819
+  '72':
+    clf_csi: 0.32156631871325164
+    det_csi: 0.2795421377072034
+model_type: LightGBM + Isotonic Calibration
+target: is_extreme_observed

@@ -1,0 +1,33 @@
+{
+    "dataset": "gs://weatherbench2/datasets/era5/1959-2022-6h-1440x721.zarr",
+    "historical_period": "1991-2019",
+    "spatial_domain": "latitude 8-37 N, longitude 68-98 E",
+    "variable": "2m_temperature",
+    "resolution": "0.25 degree",
+    "memory_status": "Monitored. Reached 90.7% during chunk evaluation; stopped and optimized safely.",
+    "candidate_A_month": {
+        "description": "95th percentile conditioned on month",
+        "sample_count": 3480,
+        "feasible": true,
+        "covers_nov_dec": true
+    },
+    "candidate_B_doy": {
+        "description": "95th percentile conditioned on day-of-year",
+        "sample_count": 116,
+        "feasible": true,
+        "covers_nov_dec": true
+    },
+    "candidate_C_smoothed_doy": {
+        "description": "95th percentile using +/- 15 days window around each DOY",
+        "sample_count": 3596,
+        "feasible": true,
+        "covers_nov_dec": true
+    },
+    "candidate_D_spatial": {
+        "description": "Preserve local spatial variation",
+        "feasible": true,
+        "covers_nov_dec": true
+    },
+    "methodology_issue_resolved": true,
+    "final_status": "PHASE 7B.2: CLIMATOLOGY FEASIBLE"
+}

@@ -1,0 +1,11 @@
+# Data Manifest Schema
+schema_version: "1.0"
+datasets:
+  - name: string
+    source: string (e.g., "gcs")
+    path: string
+    variables: list[string]
+    resolution: string
+    start_date: string (YYYY-MM-DD)
+    end_date: string (YYYY-MM-DD)
+    description: string

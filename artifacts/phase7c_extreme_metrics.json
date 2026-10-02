@@ -1,0 +1,162 @@
+{
+  "24": {
+    "train_samples": 6908616,
+    "val_samples": 1727154,
+    "test_samples": 1727154,
+    "train_base_rate": 0.056619733966976886,
+    "val_base_rate": 0.07593648279192243,
+    "test_base_rate": 0.0428062581564817,
+    "decision_threshold_selected_on_val": 0.3500000000000001,
+    "baselines": {
+      "climatological_brier_score": 0.041164694533089484,
+      "deterministic_adaptive": {
+        "brier_score": 0.03117440598811687,
+        "POD": 0.4908498234888345,
+        "FAR": 0.3086302152791008,
+        "CSI": 0.40262722865099354,
+        "TP": 36290,
+        "FP": 16200,
+        "FN": 37643,
+        "TN": 1637021
+      }
+    },
+    "classifier": {
+      "brier_score": 0.023641787625295743,
+      "POD": 0.6607333666968742,
+      "FAR": 0.439150401836969,
+      "CSI": 0.43544922136152536,
+      "TP": 48850,
+      "FP": 38250,
+      "FN": 25083,
+      "TN": 1614971
+    }
+  },
+  "48": {
+    "train_samples": 6908616,
+    "val_samples": 1727154,
+    "test_samples": 1727154,
+    "train_base_rate": 0.05664245921324908,
+    "val_base_rate": 0.07521969668020338,
+    "test_base_rate": 0.04270551438956804,
+    "decision_threshold_selected_on_val": 0.30000000000000004,
+    "baselines": {
+      "climatological_brier_score": 0.04107599186130877,
+      "deterministic_adaptive": {
+        "brier_score": 0.03541259204448474,
+        "POD": 0.4035168589595846,
+        "FAR": 0.36580012784998933,
+        "CSI": 0.3273321162263819,
+        "TP": 29763,
+        "FP": 17167,
+        "FN": 43996,
+        "TN": 1636228
+      }
+    },
+    "classifier": {
+      "brier_score": 0.027647308216000293,
+      "POD": 0.6394338318035765,
+      "FAR": 0.5427984257158921,
+      "CSI": 0.3634906322011823,
+      "TP": 47164,
+      "FP": 55994,
+      "FN": 26595,
+      "TN": 1597401
+    }
+  },
+  "72": {
+    "train_samples": 6908616,
+    "val_samples": 1727154,
+    "test_samples": 1727154,
+    "train_base_rate": 0.056681396100174045,
+    "val_base_rate": 0.07405014260453903,
+    "test_base_rate": 0.043599470574135255,
+    "decision_threshold_selected_on_val": 0.30000000000000004,
+    "baselines": {
+      "climatological_brier_score": 0.041869693515259196,
+      "deterministic_adaptive": {
+        "brier_score": 0.03830058002934307,
+        "POD": 0.34084963414472197,
+        "FAR": 0.39151770897539234,
+        "CSI": 0.2795421377072034,
+        "TP": 25667,
+        "FP": 16515,
+        "FN": 49636,
+        "TN": 1635336
+      }
+    },
+    "classifier": {
+      "brier_score": 0.030825223367489635,
+      "POD": 0.5657676320996508,
+      "FAR": 0.5730634332097404,
+      "CSI": 0.32156631871325164,
+      "TP": 42604,
+      "FP": 57186,
+      "FN": 32699,
+      "TN": 1594665
+    }
+  },
+  "120": {
+    "train_samples": 6908616,
+    "val_samples": 1727154,
+    "test_samples": 1727154,
+    "train_base_rate": 0.05761182847621,
+    "val_base_rate": 0.06922949545900366,
+    "test_base_rate": 0.04647066793117464,
+    "decision_threshold_selected_on_val": 0.25000000000000006,
+    "baselines": {
+      "climatological_brier_score": 0.044435270411495385,
+      "deterministic_adaptive": {
+        "brier_score": 0.04314728159735611,
+        "POD": 0.2726321297749869,
+        "FAR": 0.42452135493372606,
+        "CSI": 0.22698228289282601,
+        "TP": 21882,
+        "FP": 16142,
+        "FN": 58380,
+        "TN": 1630750
+      }
+    },
+    "classifier": {
+      "brier_score": 0.03552729459362632,
+      "POD": 0.5841369514838902,
+      "FAR": 0.6628287462873335,
+      "CSI": 0.2719032181361604,
+      "TP": 46884,
+      "FP": 92167,
+      "FN": 33378,
+      "TN": 1554725
+    }
+  },
+  "240": {
+    "train_samples": 6908616,
+    "val_samples": 1727154,
+    "test_samples": 1727154,
+    "train_base_rate": 0.05938656888731404,
+    "val_base_rate": 0.0629121664889176,
+    "test_base_rate": 0.05664578838945456,
+    "decision_threshold_selected_on_val": 0.15000000000000002,
+    "baselines": {
+      "climatological_brier_score": 0.053444554924929145,
+      "deterministic_adaptive": {
+        "brier_score": 0.056728004567050766,
+        "POD": 0.155862872562247,
+        "FAR": 0.5023172323759791,
+        "CSI": 0.13467635811246434,
+        "TP": 15249,
+        "FP": 15391,
+        "FN": 82587,
+        "TN": 1613927
+      }
+    },
+    "classifier": {
+      "brier_score": 0.04734269813913886,
+      "POD": 0.5728463960096488,
+      "FAR": 0.783898729882088,
+      "CSI": 0.1861113048213936,
+      "TP": 56045,
+      "FP": 203301,
+      "FN": 41791,
+      "TN": 1426017
+    }
+  }
+}

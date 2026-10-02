@@ -1,0 +1,14 @@
+created_from: phase1_monthly
+dataset: verification_2020
+file: data/verification/verification_2020.parquet
+qa:
+  duplicates: 0
+  invalid_valid_times: 0
+  missing_hres: 0
+  missing_obs: 0
+  missing_pangu: 0
+splits:
+  test_cases: 8635770
+  train_cases: 34543080
+  val_cases: 8635770
+total_cases: 51814620

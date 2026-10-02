@@ -1,0 +1,30 @@
+dataset_sources:
+- HRES
+- PANGU
+- ERA5
+domain: 8-37N, 68-98E
+file_size: 1141412190
+initialization_period: 2020-01-01 to 2020-12-31
+leads:
+- 24
+- 48
+- 72
+- 120
+- 240
+monthly_artifacts:
+- data/phase1_monthly\phase1_2020_01.parquet
+- data/phase1_monthly\phase1_2020_02.parquet
+- data/phase1_monthly\phase1_2020_03.parquet
+- data/phase1_monthly\phase1_2020_04.parquet
+- data/phase1_monthly\phase1_2020_05.parquet
+- data/phase1_monthly\phase1_2020_06.parquet
+- data/phase1_monthly\phase1_2020_07.parquet
+- data/phase1_monthly\phase1_2020_08.parquet
+- data/phase1_monthly\phase1_2020_09.parquet
+- data/phase1_monthly\phase1_2020_10.parquet
+- data/phase1_monthly\phase1_2020_11.parquet
+- data/phase1_monthly\phase1_2020_12.parquet
+resolution: 0.25 deg
+row_count: 103629240
+status: PASS
+variable: 2m_temperature
