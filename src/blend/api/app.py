@@ -86,32 +86,40 @@ def get_verification_metrics():
         }
     }
 
+from fastapi import Query
 import functools
 import pyarrow.dataset as ds
 import pandas as pd
 
-@functools.lru_cache(maxsize=1)
-def fetch_reference_forecast():
+@functools.lru_cache(maxsize=100)
+def fetch_reference_forecast(lat: float, lon: float, init_time: str, lead_time_hours: int):
     # Lazy read and pushdown filter to prevent loading the 3.5GB parquet into memory
-    dataset = ds.dataset(DATA_DIR / "probabilistic" / "probabilistic_forecasts_2020.parquet", format="parquet")
+    dataset = ds.dataset(DATA_DIR / "probabilistic" / "probabilistic_forecasts_test.parquet", format="parquet")
     table = dataset.to_table(filter=(
         (ds.field("split") == "test") &
-        (ds.field("init_time") == pd.Timestamp("2020-11-01 00:00:00")) &
-        (ds.field("valid_time") == pd.Timestamp("2020-11-06 00:00:00")) &
-        (ds.field("lead_time_hours") == 120) &
-        (ds.field("latitude") == 17.75) &
-        (ds.field("longitude") == 68.25)
+        (ds.field("init_time") == pd.Timestamp(init_time)) &
+        (ds.field("lead_time_hours") == lead_time_hours) &
+        (ds.field("latitude") == lat) &
+        (ds.field("longitude") == lon)
     ))
-    return table.slice(0, 1).to_pylist()[0]
+    rows = table.to_pylist()
+    return rows[0] if rows else None
 
 @app.get("/api/v1/forecast/current")
-def get_current_forecast():
+def get_current_forecast(
+    lat: float = Query(17.75, description="Latitude"),
+    lon: float = Query(68.25, description="Longitude"),
+    init_time: str = Query("2020-11-01 00:00:00", description="Initialization time"),
+    lead_time: int = Query(120, description="Lead time in hours")
+):
     """
     Returns a verified Phase 6 probabilistic forecast case drawn from the frozen 2020 evaluation set.
     This serves as the data contract for the dashboard's Verified 2020 Reference Case.
     """
     try:
-        sample = fetch_reference_forecast()
+        sample = fetch_reference_forecast(lat, lon, init_time, lead_time)
+        if not sample:
+            return {"status": "error", "message": "No precomputed forecast is available for this selection."}
         
         hres_val = float(sample['hres_forecast'])
         pangu_val = float(sample['pangu_forecast'])

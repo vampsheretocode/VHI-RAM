@@ -3,6 +3,24 @@ import requests
 import pandas as pd
 import altair as alt
 import textwrap
+import json
+import os
+import subprocess
+import time
+import socket
+from pathlib import Path
+
+@st.cache_resource
+def start_fastapi():
+    # Only start if port 8000 is not already bound
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        if s.connect_ex(('127.0.0.1', 8000)) == 0:
+            return None 
+    proc = subprocess.Popen(["python", "-m", "uvicorn", "src.blend.api.app:app", "--host", "127.0.0.1", "--port", "8000"])
+    time.sleep(3) # Wait for Uvicorn to boot
+    return proc
+
+start_fastapi()
 
 # ==============================================================================
 # PAGE CONFIG & CSS (PREMIUM DATA VISUALIZATION)
@@ -10,7 +28,7 @@ import textwrap
 st.set_page_config(
     page_title="VHI-RAM",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
 
 css = """
@@ -201,7 +219,7 @@ alt.themes.enable("dark_theme")
 # ==============================================================================
 # DATA FETCHING
 # ==============================================================================
-API_URL = "http://localhost:8000/api/v1"
+API_URL = os.environ.get("API_URL", "http://localhost:8000/api/v1")
 
 @st.cache_data(ttl=60)
 def fetch_api(endpoint):
@@ -213,11 +231,32 @@ def fetch_api(endpoint):
         pass
     return None
 
+# Load metadata for case selection
+META_PATH = Path("data/index/case_metadata.json")
+try:
+    with open(META_PATH, "r") as f:
+        case_meta = json.load(f)
+except Exception:
+    st.error("Case metadata index not found. Please run the case discovery script.")
+    st.stop()
+
+# Sidebar controls
+st.sidebar.title("Select Case")
+selected_lat = st.sidebar.selectbox("Latitude", case_meta["latitudes"], index=case_meta["latitudes"].index(17.75) if 17.75 in case_meta["latitudes"] else 0)
+selected_lon = st.sidebar.selectbox("Longitude", case_meta["longitudes"], index=case_meta["longitudes"].index(68.25) if 68.25 in case_meta["longitudes"] else 0)
+default_init = "2020-11-01 00:00:00"
+selected_init = st.sidebar.selectbox("Init Time", case_meta["init_times"], index=case_meta["init_times"].index(default_init) if default_init in case_meta["init_times"] else 0)
+selected_lead = st.sidebar.selectbox("Lead Time (Hours)", case_meta["lead_times"], index=case_meta["lead_times"].index(120) if 120 in case_meta["lead_times"] else 0)
+
 system_status = fetch_api("/system/status") or {}
 metrics = fetch_api("/verification/metrics") or {}
-current_forecast = fetch_api("/forecast/current") or {}
+current_forecast = fetch_api(f"/forecast/current?lat={selected_lat}&lon={selected_lon}&init_time={selected_init}&lead_time={selected_lead}") or {}
 trajectory = fetch_api("/forecast/trajectory") or {"status": "error", "data": []}
 extremes_eval = fetch_api("/extremes/evaluation") or {"status": "error"}
+
+if current_forecast.get("status") == "error":
+    st.error(current_forecast.get("message", "Error fetching forecast."))
+    st.stop()
 
 # ==============================================================================
 # HEADER
@@ -239,6 +278,9 @@ st.markdown(f"""
 # ==============================================================================
 # HERO FORECAST
 # ==============================================================================
+def kelvin_to_celsius(k):
+    return k - 273.15
+
 if current_forecast:
     init_dt = pd.to_datetime(current_forecast.get('init_time', '2020-11-01'))
     val_dt = pd.to_datetime(current_forecast.get('valid_time', '2020-11-06'))
@@ -255,14 +297,14 @@ if current_forecast:
 <div style="text-align: left;">VERIFIED 2020 REFERENCE CASE<br>{lat}°N · {lon}°E</div>
 <div style="text-align: right;">LEAD {lead}H<br>{init_dt.strftime('%d %b %Y · %H UTC').upper()}</div>
 </div>
-<div class="hero-main-val">{p50:.2f} K</div>
+<div class="hero-main-val">{p50:.2f} K<br><span style="font-size: 32px; color: #94A3B8;">{kelvin_to_celsius(p50):.2f} °C</span></div>
 <div class="hero-main-label">ADAPTIVE P50</div>
 
 <div style="font-size: 10px; color: #64748B; letter-spacing: 1px;">80% UNCERTAINTY RANGE</div>
 <div class="u-band">
-<div style="text-align: right; width: 80px;">P10<br><span style="color: #E2E8F0;">{p10:.2f}</span></div>
+<div style="text-align: right; width: 80px;">P10<br><span style="color: #E2E8F0;">{p10:.2f} K</span><br><span style="color: #94A3B8; font-size: 11px;">{kelvin_to_celsius(p10):.2f} °C</span></div>
 <div class="u-line"><div class="u-dot"></div></div>
-<div style="text-align: left; width: 80px;">P90<br><span style="color: #E2E8F0;">{p90:.2f}</span></div>
+<div style="text-align: left; width: 80px;">P90<br><span style="color: #E2E8F0;">{p90:.2f} K</span><br><span style="color: #94A3B8; font-size: 11px;">{kelvin_to_celsius(p90):.2f} °C</span></div>
 </div>
 </div>
 """, unsafe_allow_html=True)
