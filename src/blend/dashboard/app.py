@@ -35,7 +35,6 @@ css = """
 <style>
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
-header {visibility: hidden;}
 
 .stApp {
     background-color: #080D18;
