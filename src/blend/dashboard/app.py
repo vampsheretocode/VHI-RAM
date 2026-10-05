@@ -19,13 +19,15 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+import sys
+
 @st.cache_resource
 def start_fastapi():
     # Only start if port 8000 is not already bound
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         if s.connect_ex(('127.0.0.1', 8000)) == 0:
             return None 
-    proc = subprocess.Popen(["python", "-m", "uvicorn", "src.blend.api.app:app", "--host", "127.0.0.1", "--port", "8000"])
+    proc = subprocess.Popen([sys.executable, "-m", "uvicorn", "src.blend.api.app:app", "--host", "127.0.0.1", "--port", "8000"])
     time.sleep(3) # Wait for Uvicorn to boot
     return proc
 
