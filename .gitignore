@@ -26,3 +26,4 @@ Thumbs.db
 
 # Large scientific datasets
 data/**/*.parquet
+venv/
