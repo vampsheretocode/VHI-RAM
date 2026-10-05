@@ -10,6 +10,15 @@ import time
 import socket
 from pathlib import Path
 
+# ==============================================================================
+# PAGE CONFIG
+# ==============================================================================
+st.set_page_config(
+    page_title="VHI-RAM",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 @st.cache_resource
 def start_fastapi():
     # Only start if port 8000 is not already bound
@@ -21,15 +30,6 @@ def start_fastapi():
     return proc
 
 start_fastapi()
-
-# ==============================================================================
-# PAGE CONFIG & CSS (PREMIUM DATA VISUALIZATION)
-# ==============================================================================
-st.set_page_config(
-    page_title="VHI-RAM",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
 
 css = """
 <style>
