@@ -232,7 +232,8 @@ def fetch_api(endpoint):
     return None
 
 # Load metadata for case selection
-META_PATH = Path("data/index/case_metadata.json")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+META_PATH = BASE_DIR / "data" / "index" / "case_metadata.json"
 try:
     with open(META_PATH, "r") as f:
         case_meta = json.load(f)
